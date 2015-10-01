@@ -12,10 +12,13 @@ app.use(function (req, res) {
 
   var showsJSON = req.body.payload;
   showsJSON.forEach(function(item) {
-    // console.log(item.title)
-    shows.push({"image": item.image,"slug": item.slug, "title": item.title});
+    if (item.drm) {
+      if (item.episodeCount > 0) {
+        shows.push({"image": item.image.showImage,"slug": item.slug, "title": item.title});
+      }
+    }
   });
-
+  console.log(shows.length);
   showsObj.response = shows;
   res.end(JSON.stringify(showsObj, null, 2))
 })
