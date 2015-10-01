@@ -18,9 +18,15 @@ app.use(function (req, res) {
       }
     }
   });
-  console.log(shows.length);
+
   showsObj.response = shows;
-  res.end(JSON.stringify(showsObj, null, 2))
-})
+  res.end(JSON.stringify(showsObj, null, 2));
+
+});
+
+app.use(function(err, req, res, next) {
+    res.status(err.status || 400);
+    res.send({"error": "Could not decode request: JSON parsing failed"});
+});
 
 app.listen(process.env.PORT || 4000);
