@@ -22,6 +22,7 @@ app.use(function (req, res) {
   });
 
   showsObj.response = shows; // add shows array
+  res.set({ 'content-type': 'application/json; charset=utf-8' });
   res.end(JSON.stringify(showsObj, null, 2)); // convert to JSON
 
 });
