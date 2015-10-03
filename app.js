@@ -9,7 +9,7 @@ app.get('/', function(req, res) {
   res.end('Service Test');
 })
 
-app.use(function (req, res) {
+app.post('/', function (req, res) {
 
   var showsObj = {"response": []}; // obj to return as JSON
   var shows = []; // var to store filtered JSON
