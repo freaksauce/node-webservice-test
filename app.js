@@ -2,13 +2,17 @@ var express = require('express');
 var bodyParser = require('body-parser')
 var app = express();
 
-var showsObj = {"response": []}; // obj to return as JSON
-var shows = []; // var to store filtered JSON
-
 // parse application/json
 app.use(bodyParser.json());
 
+app.get('/', function(req, res) {
+  res.end('Service Test');
+})
+
 app.use(function (req, res) {
+
+  var showsObj = {"response": []}; // obj to return as JSON
+  var shows = []; // var to store filtered JSON
 
   // get JSON
   var showsJSON = req.body.payload;
